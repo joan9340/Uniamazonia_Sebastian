@@ -1,0 +1,12 @@
+#caj1 {
+     background-color: #af260eec; /* Color de fondo ROJO */
+     width: 200px;
+     height: 200px;
+     display: inline-block;
+   }
+   #caj2 {
+     background-color: #3d12d8ec; /* Color de fondo AZUL */
+      width: 200px;
+     height: 200px;
+     display: inline-block;
+   }
