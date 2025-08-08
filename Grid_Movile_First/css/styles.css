@@ -1,0 +1,64 @@
+/* Mobile First: una sola columna */
+   #container {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(6, 1fr);
+      /* Ahora sí hay 6 filas */
+      grid-template-areas:
+         "header"
+         "nav"
+         "productos"
+         "servicios"
+         "aside"
+         "footer";
+      gap: 5px;
+   }
+/* Areas */
+   header {
+      grid-area: header;
+      background: lightblue;
+   padding: 10px;
+   }
+
+   nav {
+      grid-area: nav;
+      background: lightgreen;
+    padding: 10px;
+   }
+
+   .productos {
+      grid-area: productos;
+      background: lightcoral;
+   padding: 10px;
+   }
+
+   .servicios {
+      grid-area: servicios;
+      background: lightgoldenrodyellow;
+   padding: 10px;
+   }
+
+   aside {
+      grid-area: aside;
+      background: lightpink;
+   padding: 10px;
+   }
+
+   footer {
+      grid-area: footer;
+      background: lightgray;
+   padding: 10px;
+   }
+/* Ejemplo: en pantallas grandes cambia a 2 columnas */
+@media (min-width: 601px) {
+   #container {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto auto auto;
+      /* Ahora sí hay 3 filas */
+      grid-template-areas:
+         "header header"
+         "nav productos"
+         "servicios aside"
+         "footer footer";
+   }
+}
