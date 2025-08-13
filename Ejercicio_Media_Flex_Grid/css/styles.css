@@ -1,148 +1,251 @@
-*{
-    margin:0;
+/* ===== Reset básico ===== */
+* {
+    margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-h1{
-    margin-bottom: 20px;
-    /* Espacio debajo del título */
-}
-/* Logo */
-#container-title img {
-    width: 150px;   /* o el tamaño que quieras */
-    height: auto;   /* mantiene proporción */
+
+/* Tipografía y espacios base (mejor legibilidad) */
+body {
+    line-height: 1.5;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
 }
 
-nav {
-   display: flex;
+p {
+    margin-bottom: 1rem;
 }
+
+h1,
+h2 {
+    margin-bottom: 0.75rem;
+}
+
+h1 {
+    margin-left: 10px;
+}
+
+/* ===== Cabecera y navegación ===== */
+#container-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+#container-title img {
+    width: 150px;
+    height: auto;
+    /* mantiene proporción */
+    display: block;
+    object-fit: contain;
+    /* por si cambias el alto en el futuro */
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 10px 20px;
+    background-color: #f8f8f8;
+}
+
+/* Promos */
+#promos {
+    display: flex;
+    justify-content: flex-end;
+    /* <- antes estaba "end" (compatibilidad) */
+    padding: 6px 20px;
+    min-height: 30px;
+    background-color: yellow;
+}
+
+/* Nav */
+nav {
+    display: block;
+}
+
 nav ul {
     list-style: none;
     display: flex;
-    gap: 20px; /* Espacio entre los elementos */
+    gap: 20px;
 }
-nav ul li a{
+
+nav ul li a {
     text-decoration: none;
-    color:blue;
+    color: #0045ff;
     font-weight: 500;
     padding: 8px 12px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
+    border-radius: 6px;
+    transition: background-color .3s ease;
 }
+
 nav ul li a:hover {
-    background-color: #e0e0e0; /* Cambia el color de fondo al pasar el mouse */
+    background-color: #e0e0e0;
 }
-header {
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
-   padding: 10px 20px;
-   background-color: #f8f8f8;
-   height: auto;
-   
 
+/* ===== Hero con imagen de fondo ===== */
+/* Quité la imagen de fondo del body para evitar duplicación
+   y la dejé solo en #sectionA como hero. */
+#sectionA {
+    min-height: 70vh;
+    background-image: url('../img/fotoexterior.jpeg');
+    background-position: center center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: #000;
+    background-attachment: fixed;
+    /* clave para efecto */
 }
-#promos{
-display: flex;
-justify-content: end;
-padding-right: 100px;
-height: 30px;
-background-color: yellow;
+
+
+
+/* Si quieres mejorar legibilidad encima de la foto: descomenta
+#sectionA::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(0deg, rgba(0,0,0,.3), rgba(0,0,0,.3));
 }
-#sectionA{
-    height: 90vh;
-    background-color: #0a48a6;
+*/
+
+/* ===== Secciones / tarjetas ===== */
+#sectionNumbers {
+    display: grid;
+    gap: 16px;
+    margin: 20px;
 }
-.cuadro-numero{
-    height: 50vh;
+
+.cuadro-numero {
+    min-height: 240px;
+    /* antes 50vh -> excesivo en móvil */
     border: 1px solid #000;
-
+    background: #fff;
+    /* evita texto sobre imagen del body */
+    padding: 14px;
+    border-radius: 8px;
 }
-.box-news{
-    height: 100vh;
+
+.box-news {
+    min-height: 320px;
+    /* antes 100vh -> muy grande */
     background-color: rgb(15, 85, 62);
     border: 1px solid black;
+    border-radius: 8px;
+    margin: 16px 0;
+    grid-template-rows: 1fr 2fr 1fr;
+    grid-template-columns: 1fr 0.2fr 0.8fr;
+    grid-template-areas:
+        "titulo titulo vacio"
+        "texto vacio imagen"
+
 
 }
+
+/* El selector #background era huérfano; se elimina */
+
+/* ===== Footer ===== */
 footer {
-    height: 100vh;
-  
+    padding: 24px 20px;
+    background: #f4f4f4;
+    /* antes height: 100vh -> generaba un pie gigante */
 }
-#contact{
-    height: 90%;
+
+#contact {
+    min-height: 100px;
     background-color: rgb(221, 54, 54);
     border: 1px solid black;
-
+    border-radius: 6px;
+    margin-bottom: 10px;
 }
-#aboutMe{
-    height: 10%;
-    background-color: #ccc;
-    border: 1px solid black
+.tituloBox {
+    grid-area: "titulo";
+    background-color: green;
 }
-#container-title{
+.vacio{
+    grid-area: "vacio" ;
+}
+#articleB {
     display: flex;
     align-items: center;
-}
-h1{
-    margin-left: 10px;
-}
-/* Media query tablet */
-@media(min-width:480px)and(max-width: 1023px){
-    #sectionNumbers{
-        display: flex;
-        flex-wrap: wrap;
-        background-color: red;
-    }
-
-    .cuadro-numero{
-        width: 50%;
-        height: 35vh;
-
-    }
-    #sectionA{
-        height: 50vh;
-    }
-    .box-news{
-        height: 50vh;
-    }
-    footer{
-        height: 50vh;
-    }
+    justify-content: space-between;
+    gap: 20px; /* espacio entre texto e imagen */
+    border: 1px solid black;
+    border-radius: 8px;
+    padding: 20px;
+    background-color: #f8f8f8;
 }
 
-/* Responsive móvil */
-@media (max-width: 1024px) {
+#articleB .texto {
+    flex: 1; /* ocupa la mitad izquierda */
+}
+
+#articleB .imagen {
+    flex: 1; /* ocupa la mitad derecha */
+    display: flex;
+    justify-content: flex-end; /* imagen alineada a la derecha */
+}
+
+#articleB .imagen img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.parraBox {
+    grid-area: "texto";
+    padding: 10px;
+    color: white;
+}
+
+#aboutMe {
+    min-height: 60px;
+    background-color: #ccc;
+    border: 1px solid black;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+/* ===== Responsividad (mobile-first) ===== */
+
+/* MÓVIL: base (hasta 767px) */
+@media (max-width: 767px) {
     nav ul {
         flex-direction: column;
         gap: 10px;
     }
-    nav{
-        display: none;
+
+    /* Importante: NO ocultamos el nav en móvil */
+}
+
+/* TABLET: 768px–1023px */
+@media (min-width: 768px) and (max-width: 1023px) {
+    #sectionNumbers {
+        grid-template-columns: repeat(2, 1fr);
+        background-color: transparent;
+        /* antes rojo de prueba */
+    }
+
+    #sectionA {
+        min-height: 50vh;
+    }
+
+    .box-news {
+        min-height: 280px;
     }
 }
-/* Media Query Escritorio */
-@media(min-width: 769px){
-    #sectionNumbers{
-        display:flex;
 
+/* ESCRITORIO: 1024px en adelante */
+@media (min-width: 1024px) {
+    #sectionNumbers {
+        grid-template-columns: repeat(4, 1fr);
     }
-    #sectionA{
-        height: 70vh;
-    }
-    .cuadro-numero{
-        width: 25%;
-        height: 40vh;
-    }
-    .box-news{
-        height: 50vh;
 
+    #sectionA {
+        min-height: 70vh;
     }
-    footer{
-        height: 50vh;
+
+    .box-news {
+        min-height: 360px;
     }
-    nav{
-        display: flex;
-    }
-    
-  
 }
