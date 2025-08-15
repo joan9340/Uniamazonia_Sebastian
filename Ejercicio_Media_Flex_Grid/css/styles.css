@@ -57,7 +57,7 @@ header {
     /* <- antes estaba "end" (compatibilidad) */
     padding: 6px 20px;
     min-height: 30px;
-    background-color: yellow;
+    background-color: rgb(36, 50, 180);
 }
 
 /* Nav */
@@ -111,18 +111,18 @@ nav ul li a:hover {
 /* ===== Secciones / tarjetas ===== */
 #sectionNumbers {
     display: grid;
-    gap: 16px;
-    margin: 20px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 20px;
+
 }
 
-.cuadro-numero {
-    min-height: 240px;
-    /* antes 50vh -> excesivo en móvil */
-    border: 1px solid #000;
-    background: #fff;
-    /* evita texto sobre imagen del body */
-    padding: 14px;
-    border-radius: 8px;
+.cuadro-numero img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(120, 5, 118, 0.945);
 }
 
 .box-news {
@@ -157,18 +157,53 @@ footer {
     border-radius: 6px;
     margin-bottom: 10px;
 }
+
 .tituloBox {
-    grid-area: "titulo";
+    grid-area: titulo;
     background-color: green;
 }
-.vacio{
-    grid-area: "vacio" ;
+
+.cuadro-numero h6 {
+    text-align: center;
+    margin-top: 8px;
+    font-size: 14px;
+    color: #333;
 }
+
+#articleC {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    /* Espacio entre texto e imagen */
+    border: 1px solid black;
+    border-radius: 8px;
+    padding: 20px;
+    background-color: #f8f8f8;
+}
+
+#articleC .texto {
+    flex: 1;
+    /* ocupa la mitad izquierda */
+}
+
+#articleC .imagen {
+    flex: 1;
+    height: 400px;
+    width: 400px;
+    /* ocupa la mitad derecha */
+    display: flex;
+    justify-content: flex-end;
+    /* imagen alineada a la derecha */
+}
+
+
 #articleB {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 20px; /* espacio entre texto e imagen */
+    gap: 20px;
+    /* espacio entre texto e imagen */
     border: 1px solid black;
     border-radius: 8px;
     padding: 20px;
@@ -176,13 +211,18 @@ footer {
 }
 
 #articleB .texto {
-    flex: 1; /* ocupa la mitad izquierda */
+    flex: 1;
+    /* ocupa la mitad izquierda */
 }
 
 #articleB .imagen {
-    flex: 1; /* ocupa la mitad derecha */
+    flex: 1;
+    /* ocupa la mitad derecha */
+    height: 525px;
+    width: 525px;
     display: flex;
-    justify-content: flex-end; /* imagen alineada a la derecha */
+    justify-content: flex-end;
+    /* imagen alineada a la derecha */
 }
 
 #articleB .imagen img {
@@ -232,6 +272,13 @@ footer {
 
     .box-news {
         min-height: 280px;
+    }
+}
+
+/* PANTALLAS PEQUEÑAS */
+@media (max-width: 480px) {
+    #sectionNumbers {
+        grid-template-columns: 1fr;
     }
 }
 
